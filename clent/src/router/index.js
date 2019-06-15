@@ -6,6 +6,7 @@ import Home from '../views/Home'
 // import procer from '../views/Homese/processed'
 import seach from "../views/seach"
 import loaging from "../views/loaging"
+
 Vue.use(Router)
 
 const Rout= new Router({
@@ -22,14 +23,26 @@ const Rout= new Router({
       component: seach
     },
     {
+      path: '/cont/:type',
+      meta:"申请表",
+      name: 'cont',
+      component:()=>import("../views/contend.vue")
+    },
+    {
       path: '/loaging',
       meta:"搜索",
       name: 'loaging',
       component: loaging
     },
     {
+      path: '/details/:type/:id',
+      meta:"详情页",
+      name: 'details',
+      component:()=>import("../views/details.vue")
+    },
+    {
       path: '/home',
-      
+      meta:"首页",
       name: 'Home',
       // redirect:"/home/laun",
       component: Home,

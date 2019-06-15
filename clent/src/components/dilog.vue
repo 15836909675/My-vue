@@ -1,13 +1,13 @@
 <template>
-    <div class="dilog">
+    <div class="dilog" @click="$emit('addclick')">
         <div class="dilog-con">
-            <p>
+            <p @click="addfn('overtime')">
                 <i class="iconfont icon-play1"></i>
-                <span>加班</span>
+                <span >加班</span>
             </p>
-            <p>
+            <p @click="addfn('vacation')">
                 <i class="iconfont icon-fenxiang4"></i>
-                <span>休假</span>
+                <span >休假</span>
             </p>
         </div>
     </div>
@@ -29,7 +29,9 @@ export default {
 
     },
     methods:{
-
+        addfn(val){
+       this.$router.push('/cont/'+val)
+        }
     },
     created(){
 

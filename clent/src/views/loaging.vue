@@ -9,7 +9,7 @@
         <p><input type="text" placeholder="验证码" v-model="pwd"> <span>获取验证码</span></p>
         <div class="login-con">
             <p><button @click="addfn()">登陆/注册</button></p>
-            <p><span>使用</span></p>
+       
         </div> 
     </div>
 </template>

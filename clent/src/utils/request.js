@@ -2,6 +2,8 @@ import axios from "axios";
 // import { promises } from "fs";
 import router from "../router/index"
 const request = axios.create({
+    // baseURL:"http://169.254.126.128:3000"
+    baseURL:"http://localhost:3000"
 });
 request.interceptors.request.use((config) => {
     return ({
@@ -43,6 +45,6 @@ export default {
         })
     },
     post(url,data){
-       return request.post(url,{...data})
+       return request.post(url,data)
     }
 }

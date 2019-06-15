@@ -5,12 +5,12 @@
         <div><span :class="{'active':flag}" @click="addfn('overtime')">加班</span>
         <span :class="{'active':!flag}" @click="addfn('vacation')">休假</span></div>
         <p><i class="iconfont icon-shouqi-01"></i><i class="iconfont icon-tijiaodingdan"></i></p>
-    </div>
+     </div>
       <div class="laun-mian">
           <Item v-for="(item,index) in res" :key="index" :itemer='item'/>
-        </div>
-    
-   </div>
+           <!-- <Item v-for="(item,index) in res" :key="index" :itemer='item'/> -->
+     </div>
+     </div>
 </template>
 <script>
 import Item from "./item"
@@ -25,16 +25,15 @@ Item
         }
     },
     computed:{
-
     },
     methods:{
         addfn(value){
-            // this.flag=flag
+           
             this.$emit("resd",value)
         }
     },
     created(){
-
+// console.log(res,"es")
     },
     mounted(){
 
@@ -49,14 +48,21 @@ Item
      height: 100%;
      display: flex;
      flex-direction: column;
+    
  }
  .laun-mian{
      flex: 1;
-     overflow: auto;
+     width: 100%;
+     height: 100%;
+    //  box-sizing: border-box;
+    overflow: auto;
+     width: 100%;
+     height: 100%;
        margin-top: rem(15px);
-     display: flex;
-     flex-direction: column;
-    align-items: center;
+    //  display: flex;
+    //  flex-direction: column;
+    // align-items: center;
+    text-align: center;
     position: relative;
     // background: #eee;
    

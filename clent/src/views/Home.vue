@@ -1,12 +1,10 @@
 <template>
   <div class="warper">
-    <Dilog v-show="flag"/>
+    <Dilog v-show="flag" @addclick="addclick"/>
     <Head>
       <i class="iconfont icon-arrow-left"></i>
       <span>加班/休假</span>
-      <p>
-        <i class="iconfont icon-gongzuojilu"></i>
-        <i @click="$router.push('/seach')" class="iconfont icon-fangdajing"></i>
+      <p><i class="iconfont icon-gongzuojilu"></i><i @click="$router.push('/seach')" class="iconfont icon-fangdajing"></i>
       </p>
     </Head>
       <Nav @addfn="addfn"/>
@@ -25,9 +23,11 @@
 import Head from "../components/header.vue";
 import Dilog from "../components/dilog";
 import reqyest from "../utils/request";
+import api from "../api/index"
 import Bun from "../components/top";
 import Nav from "../components/Nav"
 export default {
+  name:"home",
   props: {},
   components: {
     Head,
@@ -41,8 +41,7 @@ export default {
       ind: 0,
       value:true,
       res:[],
-     
-    obj : {
+     obj:{
         page:1,
         pageSize: 5,
         create_at: 1,
@@ -53,6 +52,9 @@ export default {
   },
   computed: {},
   methods: {
+    addclick(){
+      this.flag=false
+    },
     add(){
       this.flag=true
     },
@@ -64,7 +66,6 @@ export default {
       this.getdata()
     },
     resd(val){
-      // console.log(val)
       this.value=!this.value
       this.obj.type=val
       this.getdata()
@@ -74,25 +75,29 @@ export default {
     ...this.obj
     }).then(re=>{
       this.res=re.data.data
-      // console.log(re.data.data)
     });
     }
    
   },
   created() {
-    reqyest.get("/api/user/info", {
+    // reqyest.get("/api/user/info", {
+    //   token: window.localStorage.getItem("token")
+    // });
+    api.getdata({
       token: window.localStorage.getItem("token")
-    });
+    })
    this.getdata()
   },
   mounted() {},
-   
 };
 </script>
 <style   lang="scss">
 @import "../static/scss/common.scss";
 @import "../static/scss/_minix.scss";
 @import "../static/icon/iconfont.css";
+*{
+  box-sizing: border-box;
+}
 .warper {
   width: 100%;
   height: 100%;
@@ -101,6 +106,10 @@ export default {
 }
 .main {
   flex: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
   .pice {
     width: 30%;
     height: rem(40px);
@@ -139,8 +148,6 @@ export default {
     dt,
     dd {
       display: flex;
-
-      // flex-direction: column;
       justify-content: center;
     }
     i {

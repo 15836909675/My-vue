@@ -1,13 +1,12 @@
 <template>
-    <div class="header">
+    <div class="header" >
         <slot></slot>
+        <!-- {{styler}} -->
     </div>
 </template>
 <script>
 export default {
-    props:{
-
-    },
+    props:["styler"],
     components:{
 
     },
@@ -23,7 +22,7 @@ export default {
 
     },
     created(){
-
+        // console.log(this.styler)
     },
     mounted(){
 
@@ -39,7 +38,7 @@ export default {
     font-size: rem(15px);
     display: flex;
     align-items: center;
-    
+   
     justify-content: space-between;
     >i{
         font-size: rem(15px);

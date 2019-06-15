@@ -1,8 +1,8 @@
 <template>
-    <div class="main-box">
+    <div class="main-box" @click="push(itemer)">
     <li><span>Otsdsdas</span><p><i class="iconfont icon-dui"></i> <span>待审批</span></p></li>
     <li><p><font>申请人</font><span>{{itemer.nickname}}</span></p><p><font>加班类型</font><span>{{itemer.describes}}</span></p></li>
-     <li><p><font>加班时间</font><span>{{itemer.create_at.slice(0,10)}}</span></p><p><font>加班时数</font><span>{{itemer.startTime.slice(0,10)}}</span></p></li>
+     <li><p><font>加班时间</font><span>{{itemer.create_at}}</span></p><p><font>加班时数</font><span>{{itemer.startTime}}</span></p></li>
     </div>
 </template>
 <script>
@@ -22,7 +22,11 @@ export default {
 
     },
     methods:{
+        push(item){
+            console.log(item)
 
+            this.$router.push({name:"details",params:{type:item.list_type,id:item.applicationNumber}})
+        }
     },
     created(){
 
@@ -40,15 +44,18 @@ export default {
 }
     .main-box{
         display: flex;
-        width: 94%;
-        height: rem(90px); 
+        width: 100;
+        // padding:rem(5px) rem(10px);
+        height: rem(110px); 
         flex-direction: column;
-        margin-top: rem(5px);
+        // padding: rem(5px);
+        // margin-top: rem(5px);
         // background: #fff;
         // border-bottom: rem(2px) solid #eee;
         li{width: 100%;
             display: flex;
-            padding:rem(5px) 0;
+            height: rem(20px);
+            line-height: rem(20px);
             justify-content: space-between;
             p>i{
                 padding: rem(5px);
@@ -58,13 +65,14 @@ export default {
             }
         }
         li:nth-child(2),li:nth-child(3){
-            padding:rem(5px) 0;
+            // padding:rem(5px) 0;
             >p{
                 width: 40%;
                 display: flex;
                 justify-content: space-between;
                 font-size: rem(13px);
                 font{
+                    // width: rem(30px);
                     color: #C7C7C7;
                 }
                 // span{
